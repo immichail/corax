@@ -16,13 +16,10 @@ export class AssigneeRefComponent implements OnInit {
   public availableShown: boolean = false;
 
   constructor(private api: ApiService, public globalState: GlobalStateService) {
-    console.log(this.globalState.dependant)
   }
 
 
   ngOnInit(): void {
-    console.log("this.globalState.dependant")
-    console.log(this.globalState.dependant)
   }
 
   addAssignee(assignee_id: string) {

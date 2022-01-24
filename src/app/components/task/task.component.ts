@@ -42,8 +42,6 @@ export class TaskComponent implements OnInit {
     if (this.task_id != undefined) {
       this.api.getTask(this.task_id).subscribe((data: any) => {
         this.task = new Task(data['res']);
-        console.log("this.task")
-        console.log(this.task)
       })
     }
   }

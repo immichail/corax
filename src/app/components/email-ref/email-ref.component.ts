@@ -15,8 +15,6 @@ export class EmailRefComponent implements OnInit {
   constructor(private api: ApiService) { }
 
   ngOnInit(): void {
-    console.log("this.message_id")
-    console.log(this.message_id)
     if (this.message_id !== undefined) {
       this.api.getEmail(this.message_id).subscribe((data: any) => {
         this.email = new Email(data['res']);

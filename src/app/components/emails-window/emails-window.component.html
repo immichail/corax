@@ -1,3 +1,11 @@
 <div class="emails-container">
-  <app-email *ngFor="let email of emails" [email]="email" (onEmailDrag)="onEmailDragEmail($event)" (onEmailDrop)="onEmailDropped($event)"></app-email>
+  <div class="emails-container-inner" (wheel)="onScroll($event)" [ngStyle]="{'transform': 'translateY(' + scrollPosition + 'px)'}">
+    <app-email *ngFor="let email of emails" [email]="email" (onEmailDrag)="onEmailDragEmail($event)" (onEmailDrop)="onEmailDropped($event)"></app-email>
+  </div>
+
+  <div class="to-top-button">
+    <button mat-icon-button (click)="this.scrollPosition = 0">
+      <mat-icon>keyboard_double_arrow_right</mat-icon>
+    </button>
+  </div>
 </div>

@@ -26,7 +26,7 @@ class Task {
     this.description = obj.hasOwnProperty('description') ? obj.description : '<Не удалось загрузить задачу>';
     this.emailId = obj.hasOwnProperty('emailId') ? obj.emailId : '<Не удалось загрузить задачу>';
     this.emails = obj.hasOwnProperty('emails') ? obj.emails : [];
-    this.assignees = obj.hasOwnProperty('assignees') ? obj.assignees.map((e: any) => new Assignee(e)) : '<Не удалось загрузить задачу>';
+    this.assignees = obj.hasOwnProperty('assignees') ? obj.assignees.map((e: any) => new Assignee(e)) : [];
     this.dueTime = obj.hasOwnProperty('dueTime') ? new Date(obj.dueTime) : undefined;
   }
 }

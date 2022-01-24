@@ -40,4 +40,5 @@ export class EmailComponent implements OnInit {
     this.onEmailDrag.emit(event)
   }
 
+
 }

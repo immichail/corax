@@ -11,6 +11,8 @@ export class EmailsWindowComponent implements OnInit {
   @Output() onEmailDrag = new EventEmitter<any>();
   @Output() onEmailDrop = new EventEmitter<any>();
 
+  public scrollPosition = 0;
+
   public emails: any = [];
   public refresherInterval: any = undefined;
 
@@ -35,6 +37,18 @@ export class EmailsWindowComponent implements OnInit {
 
   onEmailDropped(event: any) {
     this.onEmailDrop.emit(event);
+  }
+
+  onScroll(event: any) {
+    if (event.wheelDelta > 0) {
+      if (this.scrollPosition - 40 < 0) {
+        this.scrollPosition += 40;
+      } else {
+        this.scrollPosition = 0;
+      }
+    } else {
+      this.scrollPosition -= 40;
+    }
   }
 
 }

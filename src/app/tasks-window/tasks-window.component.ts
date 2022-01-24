@@ -28,10 +28,7 @@ export class TasksWindowComponent implements OnInit {
     this.api.getProjects('1').subscribe((data: any) => {
       this.projectsList = data['res']
 
-      console.log("this.projects")
-      console.log(this.projects)
       this.projects?.forEach((e: ProjectComponent) => {
-        console.log("getting new tasks for ", e.project.id)
         e.getTasks()
       })
     })

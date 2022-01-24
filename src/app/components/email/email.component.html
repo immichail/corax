@@ -1,8 +1,7 @@
-<div class="email-container" cdkDrag (cdkDragMoved)="drag($event)" (cdkDragEnded)="dragDrop($event)">
-  <div class="email-card">
-    <div class="email-card-sender">{{email.sender.name}}</div>
-    <div class="email-card-subject">{{email.subject}}</div>
-    <div class="email-card-content">{{(email.body !== undefined) ? email.body.text.slice(0, 100) + '...' : 'NA'}}</div>
+  <div class="email-container" cdkDrag (cdkDragMoved)="drag($event)" (cdkDragEnded)="dragDrop($event)">
+    <div class="email-card">
+      <div class="email-card-sender">{{email.sender.name}}</div>
+      <div class="email-card-subject">{{email.subject}}</div>
+      <div class="email-card-content">{{(email.body !== undefined) ? email.body.text.slice(0, 100) + '...' : 'NA'}}</div>
+    </div>
   </div>
-</div>
-

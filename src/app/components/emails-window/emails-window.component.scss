@@ -1,7 +1,18 @@
 .emails-container {
   height: 100vh;
-  //overflow-y: scroll;
   //overflow-x: visible;
   z-index: 999;
 }
 
+.emails-container-inner {
+  height: 100vh;
+  //overflow-y: scroll;
+  transition: all 0.2s;
+}
+
+.to-top-button {
+  position: absolute;
+  top:0%;
+  right: 0%;
+  transform: rotate(-90deg);
+}
