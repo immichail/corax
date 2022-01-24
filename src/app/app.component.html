@@ -1,0 +1,11 @@
+<div class="main-window-wrapper">
+
+  <div class="task-window-wrapper">
+    <app-tasks-window #tasksWindow></app-tasks-window>
+  </div>
+
+  <div class="emails-window-wrapper" >
+    <app-emails-window (onEmailDrag)="onEmailDrag($event)" (onEmailDrop)="onEmailDropped($event)"></app-emails-window>
+  </div>
+
+</div>

@@ -1,0 +1,13 @@
+<div class="assignee-container">
+  <div class="assignee-list">
+    <div class="assignee-name" *ngFor="let assignee of assignees">{{assignee.email}}</div>
+  </div>
+  <div class="assignee-add-button"  (mouseover)="showAvailable()" (mouseleave)="hideAvailable()">
+    <div class="assignee-name">+Добавить</div>
+    <div class="available-list" *ngIf="availableShown">
+      <div class="assignee-name" *ngFor="let dependant of globalState.dependant" (click)="addAssignee(dependant)">
+        {{dependant.email}}
+      </div>
+    </div>
+  </div>
+</div>

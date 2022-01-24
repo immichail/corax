@@ -1,0 +1,49 @@
+@use '@angular/material' as mat;
+
+//@include mat.core()
+
+.main-window-wrapper {
+  display: flex;
+}
+
+.task-window-wrapper {
+  position: relative;
+  width: 45vw;
+  height: 100vh;
+}
+
+.emails-window-wrapper {
+  position: relative;
+  width: 45vw;
+  height: 100vh;
+}
+
+$corax-palette: (
+  50: #e8eaf6,
+  100: #c5cae9,
+  200: #9fa8da,
+  300: #7986cb,
+  // ... continues to 900
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: white,
+    // ... continues to 900
+  )
+);
+
+$corax-theme: mat.define-light-theme((
+  color: (
+    primary: red,
+    accent: blue,
+    warn: yellow,
+  )
+));
+
+$corax-primary-color: #6a1b9a;
+$corax-primary-secondary: #ffeb3b;
+$corax-secondary-color: #00c4ff;
+
+$corax-delete-button-color: #ff6363;
+$corax-done-button-color: #63fa6b;

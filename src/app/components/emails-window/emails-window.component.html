@@ -1,0 +1,3 @@
+<div class="emails-container">
+  <app-email *ngFor="let email of emails" [email]="email" (onEmailDrag)="onEmailDragEmail($event)" (onEmailDrop)="onEmailDropped($event)"></app-email>
+</div>

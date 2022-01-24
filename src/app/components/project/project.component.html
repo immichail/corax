@@ -1,0 +1,23 @@
+<div #projectActiveField class="project-container" [ngClass]="{'selected': selected}">
+  <div class="project-card" [ngStyle]="theming.card">
+    <div class="project-card-title">
+      <div class="project-card-title-text">
+        <input class="project-card-title-text-wrapper" [(ngModel)] = 'project.name' (change)="projectChange()"/>
+      </div>
+      <div class="project-card-title-icon">
+        <button mat-icon-button (click)="enterEditMode()">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </div>
+    </div>
+
+    <div
+      cdkDropList
+      #projectList="cdkDropList"
+      [cdkDropListData]="tasks"
+      class="example-list">
+<!--      <div class="example-box" *ngFor="let task of tasks" cdkDrag>{{task.title}}</div>-->
+      <app-task *ngFor="let task of tasks" [task_id]="task" (taskDeleted)="getTasks()"></app-task>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,52 @@
+@use '@angular/material' as mat;
+@import '../../app.component.scss';
+@include mat.core();
+
+.project-container {
+  position: relative;
+  width: 100%;
+  height: auto;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.project-card {
+  padding: 12px;
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.5);
+
+  -webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+}
+
+.project-container.selected {
+  border: 5px solid black;
+}
+
+.project-card-title {
+  display: flex;
+  justify-content: space-between;
+  vertical-align: center;
+
+  .project-card-title-text {
+    display: table;
+
+    input {
+      color: $corax-primary-color;
+      font-weight: bold;
+    }
+  }
+
+  .project-card-title-text-wrapper {
+    font-size: 1em;
+    padding-bottom: 12px;
+    background-color: transparent;
+    border: none;
+  }
+
+
+
+  .project-card-title-icon {
+  }
+}

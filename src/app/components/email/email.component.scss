@@ -1,0 +1,33 @@
+@import '../../app.component.scss';
+
+.email-container {
+  padding: 2px;
+
+
+  .email-card {
+    padding: 12px;
+    font-size: 0.75em;
+
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0.5);
+
+    -webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+    box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+
+
+    .email-card-sender {
+      font-size: 1.5em;
+      color: $corax-primary-color;
+    }
+
+    .email-card-subject {
+      font-size: 1.0em;
+    }
+
+    .email-card-content {
+      font-size: 1.0em;
+      color: rgba(0, 0, 0, 0.5)
+    }
+  }
+}

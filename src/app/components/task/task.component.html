@@ -1,0 +1,51 @@
+<div class="task-container" cdkDrag>
+  <div class="task-card">
+    <div class="task-title">
+<!--      <div class="task-title-title">-->
+<!--        {{task?.title}}-->
+<!--      </div>-->
+
+      <input class="task-title-text" [(ngModel)] = 'task.title' (change)="editTask()"/>
+
+<!--      <div class="task-title-controls">-->
+<!--        <button (click)="deleteTask()">-->
+<!--          <mat-icon>delete</mat-icon>-->
+<!--        </button>-->
+<!--      </div>-->
+    </div>
+
+    <textarea class="task-description" [(ngModel)]="task.description" (change)="editTask()">
+
+    </textarea>
+
+
+    <div class="task-control-panel">
+      <div class="task-delete-button" (click)="deleteTask()">
+        <div class="task-delete-button-container">
+          <mat-icon>delete</mat-icon>
+        </div>
+      </div>
+      <div class="task-done-button">
+        <div class="task-done-button-container">
+          <mat-icon>done</mat-icon>
+        </div>
+      </div>
+    </div>
+
+<!--    <mat-card-content>-->
+<!--      {{task?.description}}-->
+<!--    </mat-card-content>-->
+  </div>
+
+  <div class="task-bottom">
+    <div class="task-bottom-emails-container">
+      <app-email-ref class="email-ref" *ngFor="let email_ref of this.task.emails" [message_id]="email_ref"></app-email-ref>
+    </div>
+
+    <div class="task-bottom-assignees-container">
+      <!--        <app-assignee-ref class="assignee-ref"></app-assignee-ref>-->
+      <app-assignee-ref class="assignee-ref" [assignees]="task.assignees" [task_id]="task_id" (addAssigneeEvent)="refreshTask()"></app-assignee-ref>
+    </div>
+  </div>
+
+</div>

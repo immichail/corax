@@ -1,0 +1,21 @@
+@use '@angular/material' as mat;
+@import '~@angular/material/theming';
+@import '../../app.component';
+
+.email-ref-content {
+  padding: 2px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: $corax-secondary-color;
+  border-radius: 0.5em;
+  background-color: rgba(177, 233, 252, 0.3);
+  color: rgb(1, 117, 154);
+  font-size: 0.75em;
+  width: auto;
+
+  mat-icon {
+    font-size: 1em;
+    width: 1em;
+    height: 1em;
+  }
+}

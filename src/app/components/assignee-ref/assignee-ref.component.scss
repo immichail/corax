@@ -1,0 +1,42 @@
+@import '../../app.component';
+
+.assignee-name {
+  padding: 2px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: $corax-secondary-color;
+  border-radius: 0.5em;
+  background-color: rgba(177, 233, 252, 0.3);
+  color: rgb(1, 117, 154);
+  font-size: 0.75em;
+  width: auto;
+  margin: 2px;
+}
+
+.assignee-container {
+  position: relative;
+  overflow-y: visible;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+
+  .assignee-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .available-list {
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    top: 100%;
+    left: 0%;
+    background-color: white;
+    border-width: 2px;
+    border-style: solid;
+    border-color: white;
+    border-radius: 0.5em;
+    padding: 2px;
+
+  }
+}

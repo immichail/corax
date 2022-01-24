@@ -1,0 +1,124 @@
+@import '../../app.component';
+
+.task-container:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0%;
+  left: 0%;
+  background-color: white;
+  border-radius: 6px;
+  z-index: -1;
+}
+
+.task-container {
+  padding: 12px;
+  position: relative;
+  overflow-y: visible;
+
+  .task-card {
+    overflow-x: hidden;
+  }
+
+  .task-control-panel {
+    position: absolute;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 100%;
+    left: 110%;
+    top: 0%;
+    height: 30%;
+    width: 20%;
+    color: white;
+    transition: all 0.1s ease-in;
+    opacity: 0;
+
+    .task-delete-button {
+      display: table;
+      height: 100%;
+      grid-column: 2;
+      grid-row: 1;
+      align-self: center;
+      text-align: center;
+      background-color: $corax-delete-button-color;
+      cursor: pointer;
+
+      .task-delete-button-container {
+        display: table-cell;
+        align-content: center;
+        vertical-align: middle;
+      }
+    }
+
+    .task-done-button {
+      display: table;
+      height: 100%;
+      grid-column: 1;
+      grid-row: 1;
+      align-self: center;
+      text-align: center;
+      background-color: $corax-done-button-color;
+      cursor: pointer;
+
+      .task-done-button-container {
+        display: table-cell;
+        align-content: center;
+        vertical-align: middle;
+      }
+    }
+  }
+}
+
+.task-container:hover .task-control-panel {
+  left: 80%;
+  opacity: 1;
+  //right: 0%;
+}
+
+.task-title {
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  height: auto;
+
+  .task-title-controls {
+    height: 2vh;
+    width: 2vh;
+
+    button {
+      height: inherit;
+      width: inherit;
+      padding: 0.125vh;
+
+      mat-icon {
+        font-size: 1.5vh;
+        height: 1.5vh;
+        width: 1.5vh;
+      }
+    }
+  }
+
+  .task-title-text {
+    font-size: 1em;
+    padding-bottom: 12px;
+    background-color: transparent;
+    border: none;
+  }
+}
+
+.task-description {
+  width: 100%;
+  font-size: 0.75em;
+  padding-bottom: 12px;
+  background-color: transparent;
+  border: none;
+}
+
+.task-bottom-emails-container {
+  display: flex;
+}
+
+.task-bottom-assignees-container {
+  display: flex;
+}
