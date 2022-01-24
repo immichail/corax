@@ -1,13 +1,20 @@
+@use '@angular/material' as mat;
 @import '../../app.component';
+@import 'node_modules/bootstrap/scss/bootstrap';
+@import 'node_modules/bootstrap/scss/functions';
+@import 'node_modules/bootstrap/scss/variables';
+@import 'node_modules/bootstrap/scss/mixins';
+@include mat.core();
 
 .assignee-name {
   padding: 2px;
   border-width: 2px;
   border-style: solid;
-  border-color: $corax-secondary-color;
+  border-color: $corax-assignee-color;
   border-radius: 0.5em;
-  background-color: rgba(177, 233, 252, 0.3);
-  color: rgb(1, 117, 154);
+  //background-color: adjust-color($corax-assignee-color, $alpha: -0.5);
+  background-color: $corax-assignee-color;
+  color: white;
   font-size: 0.75em;
   width: auto;
   margin: 2px;
@@ -37,6 +44,6 @@
     border-color: white;
     border-radius: 0.5em;
     padding: 2px;
-
+    z-index: 10;
   }
 }

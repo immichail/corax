@@ -71,6 +71,13 @@ export class ApiService {
     })
   }
 
+  doneTask(task_id: string) {
+    return this.http.post(this.apiUrl + '/task/done', {
+      user_id: '1',
+      task_id: task_id
+    })
+  }
+
   getEmail(message_id: string) {
     return this.http.post(this.apiUrl + '/email', {
       user_id: '1',

@@ -21,6 +21,8 @@ export class AssigneeRefComponent implements OnInit {
 
 
   ngOnInit(): void {
+    console.log("this.globalState.dependant")
+    console.log(this.globalState.dependant)
   }
 
   addAssignee(assignee_id: string) {

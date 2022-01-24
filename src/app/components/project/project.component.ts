@@ -77,4 +77,19 @@ export class ProjectComponent implements OnInit {
       this.getTasks()
     });
   }
+
+  addTaskEmpty() {
+    let task = {
+      'title': '<Введите название задачи>',
+      'subject': '<Введите название задачи>',
+      'project_id': this.project.id,
+      'description': '<Введите описание задачи>',
+      'emails': [],
+      'assignees': []
+    }
+
+    this.api.addTask(this.project.id, task).subscribe((data: any) => {
+      this.getTasks()
+    });
+  }
 }

@@ -26,7 +26,7 @@
         </div>
       </div>
       <div class="task-done-button">
-        <div class="task-done-button-container">
+        <div class="task-done-button-container" (click)="doneTask()">
           <mat-icon>done</mat-icon>
         </div>
       </div>
@@ -38,13 +38,26 @@
   </div>
 
   <div class="task-bottom">
-    <div class="task-bottom-emails-container">
-      <app-email-ref class="email-ref" *ngFor="let email_ref of this.task.emails" [message_id]="email_ref"></app-email-ref>
+    <div class="task-bottom-left">
+      <div class="task-bottom-emails-container">
+        <app-email-ref class="email-ref" *ngFor="let email_ref of this.task.emails" [message_id]="email_ref"></app-email-ref>
+      </div>
+
+      <div class="task-bottom-assignees-container">
+        <!--        <app-assignee-ref class="assignee-ref"></app-assignee-ref>-->
+        <app-assignee-ref class="assignee-ref" [assignees]="task.assignees" [task_id]="task_id" (addAssigneeEvent)="refreshTask()"></app-assignee-ref>
+      </div>
     </div>
 
-    <div class="task-bottom-assignees-container">
-      <!--        <app-assignee-ref class="assignee-ref"></app-assignee-ref>-->
-      <app-assignee-ref class="assignee-ref" [assignees]="task.assignees" [task_id]="task_id" (addAssigneeEvent)="refreshTask()"></app-assignee-ref>
+    <div class="task-bottom-right">
+      <div class="duetime-container" (click)="showDueTimeList()">
+        <mat-icon>history</mat-icon>
+        {{getDueTime()}}
+
+        <div class="duetime-list" *ngIf="dueTimeListShown">
+          <div class="duetime-list-option" *ngFor="let time of dueTimeListOptions" (click)="setDueTime(time.value)">{{time.name}}</div>
+        </div>
+      </div>
     </div>
   </div>
 
