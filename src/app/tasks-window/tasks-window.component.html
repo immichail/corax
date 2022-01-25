@@ -1,3 +1,11 @@
+<div class="notification-button">
+  <button mat-icon-button (click)="toggleNotificationWindow()">
+    <mat-icon>sms</mat-icon>
+  </button>
+</div>
+
+<app-notification-window [visible]="notificationWindowVisible" (acceptedEvent)="refreshProjects()" #notificationWindow></app-notification-window>
+
 <app-project *ngFor="let project of projectsList" [project]="project">
 </app-project>
 

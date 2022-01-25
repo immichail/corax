@@ -1,5 +1,18 @@
+.notification-button {
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  z-index: 100;
+}
+
+app-project {
+  flex-grow: 1
+}
+
 .task-container {
   padding: 24px;
+
+  display: flex;
 }
 
 .add-project-button-container {

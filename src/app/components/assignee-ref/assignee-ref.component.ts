@@ -15,6 +15,7 @@ export class AssigneeRefComponent implements OnInit {
   @Output() addAssigneeEvent : EventEmitter<any> = new EventEmitter<Assignee>();
   public availableShown: boolean = false;
 
+
   constructor(private api: ApiService, public globalState: GlobalStateService) {
   }
 
@@ -22,8 +23,8 @@ export class AssigneeRefComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  addAssignee(assignee_id: string) {
-    this.api.addAssignee(this.task_id, assignee_id).subscribe(() => {
+  addAssignee(assignee: any) {
+    this.api.addAssignee(this.task_id, assignee.email).subscribe(() => {
       this.addAssigneeEvent.emit({})
     });
   }

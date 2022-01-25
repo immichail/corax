@@ -19,6 +19,11 @@ import {FormsModule} from "@angular/forms";
 import { MatInputModule} from "@angular/material/input";
 import { EmailRefComponent } from './components/email-ref/email-ref.component';
 import { AssigneeRefComponent } from './components/assignee-ref/assignee-ref.component';
+import {AngularEditorModule} from "@kolkov/angular-editor";
+import { LoginWindowComponent } from './components/login-window/login-window.component';
+import {MatDialog, MatDialogModule} from "@angular/material/dialog";
+import {CookieService} from "ngx-cookie-service";
+import { NotificationWindowComponent } from './components/notification-window/notification-window.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +35,8 @@ import { AssigneeRefComponent } from './components/assignee-ref/assignee-ref.com
     EmailComponent,
     EmailRefComponent,
     AssigneeRefComponent,
+    LoginWindowComponent,
+    NotificationWindowComponent,
 
   ],
   imports: [
@@ -43,9 +50,13 @@ import { AssigneeRefComponent } from './components/assignee-ref/assignee-ref.com
     MatIconModule,
     MatFormFieldModule,
     FormsModule,
-    MatInputModule
+    MatInputModule,
+    AngularEditorModule,
+    MatDialogModule
   ],
-  providers: [],
+  providers: [
+    CookieService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

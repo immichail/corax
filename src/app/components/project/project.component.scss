@@ -4,11 +4,11 @@
 
 .project-container {
   position: relative;
-  width: 100%;
+  //width: 100%;
   height: auto;
   padding: 24px;
   box-sizing: border-box;
-
+  min-width: 25vw;
 
   .add-task-button {
     position: relative;

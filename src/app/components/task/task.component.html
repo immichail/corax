@@ -1,4 +1,5 @@
 <div class="task-container" cdkDrag>
+
   <div class="task-card">
     <div class="task-title">
 <!--      <div class="task-title-title">-->
@@ -39,9 +40,9 @@
 
   <div class="task-bottom">
     <div class="task-bottom-left">
-      <div class="task-bottom-emails-container">
-        <app-email-ref class="email-ref" *ngFor="let email_ref of this.task.emails" [message_id]="email_ref"></app-email-ref>
-      </div>
+<!--      <div class="task-bottom-emails-container">-->
+<!--        <app-email-ref class="email-ref" *ngFor="let email_ref of this.task.emails" [message_id]="email_ref"></app-email-ref>-->
+<!--      </div>-->
 
       <div class="task-bottom-assignees-container">
         <!--        <app-assignee-ref class="assignee-ref"></app-assignee-ref>-->
@@ -50,9 +51,11 @@
     </div>
 
     <div class="task-bottom-right">
-      <div class="duetime-container" (click)="showDueTimeList()">
+      <div class="duetime-container" (click)="showDueTimeList()" [ngStyle]="{'color': dueTimeColor}">
         <mat-icon>history</mat-icon>
-        {{getDueTime()}}
+        <div class="duetime-value">
+          {{getDueTimeValue()}}
+        </div>
 
         <div class="duetime-list" *ngIf="dueTimeListShown">
           <div class="duetime-list-option" *ngFor="let time of dueTimeListOptions" (click)="setDueTime(time.value)">{{time.name}}</div>

@@ -12,6 +12,7 @@ export class EmailsWindowComponent implements OnInit {
   @Output() onEmailDrop = new EventEmitter<any>();
 
   public scrollPosition = 0;
+  public scrollStep = 80;
 
   public emails: any = [];
   public refresherInterval: any = undefined;
@@ -25,8 +26,12 @@ export class EmailsWindowComponent implements OnInit {
     }, 1000 * 60)
   }
 
+  refresh() {
+    this.getEmails();
+  }
+
   getEmails() {
-    this.api.getEmails('1').subscribe((data: any) => {
+    this.api.getEmails().subscribe((data: any) => {
       this.emails = data['res'];
     })
   }
@@ -41,13 +46,13 @@ export class EmailsWindowComponent implements OnInit {
 
   onScroll(event: any) {
     if (event.wheelDelta > 0) {
-      if (this.scrollPosition - 40 < 0) {
-        this.scrollPosition += 40;
+      if (this.scrollPosition - this.scrollStep < 0) {
+        this.scrollPosition += this.scrollStep;
       } else {
         this.scrollPosition = 0;
       }
     } else {
-      this.scrollPosition -= 40;
+      this.scrollPosition -= this.scrollStep;
     }
   }
 

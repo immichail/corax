@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Email, Sender} from "../../../models/models";
+import {ApiService} from "../../services/api.service";
 
 @Component({
   selector: 'app-email',
@@ -24,7 +25,13 @@ export class EmailComponent implements OnInit {
   @Output() onEmailDrag = new EventEmitter<any>();
   @Output() onEmailDrop = new EventEmitter<any>();
 
-  constructor() { }
+  public shortView = true;
+  public body: string = '';
+  public shortAnswerWindow = false;
+  public answerContent = '';
+  public answerRecipients: Array<Sender> = [];
+
+  constructor(private api: ApiService) { }
 
   ngOnInit(): void {
   }
@@ -38,6 +45,41 @@ export class EmailComponent implements OnInit {
   drag(event: any) {
     event.email = this.email;
     this.onEmailDrag.emit(event)
+  }
+
+  toggleView() {
+    if (this.body == '') {
+      this.api.getEmailBody(this.email.id).subscribe((data: any) => {
+        this.body = data['res']['body']['html']
+        this.shortView = false;
+      })
+    } else {
+      this.shortView = !this.shortView;
+    }
+  }
+
+  fastReplyToggle() {
+    this.shortAnswerWindow = true;
+    this.answerRecipients = [this.email.sender];
+  }
+
+  fastReplyToggleAll() {
+    this.shortAnswerWindow = true;
+    this.answerRecipients = [this.email.sender].concat(this.email.recipients);
+  }
+
+  fastReply() {
+    this.api.replyEmail(this.email.id, this.answerContent, this.answerRecipients).subscribe((data: any) => {
+
+    });
+  }
+
+  getRecipients() {
+    if (this.email.recipients.length > 3) {
+      return this.email.recipients.slice(0, 3);
+    } else {
+      return this.email.recipients;
+    }
   }
 
 

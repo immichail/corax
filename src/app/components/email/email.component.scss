@@ -30,4 +30,24 @@
       color: rgba(0, 0, 0, 0.5)
     }
   }
+
+  .toggle-view {
+    position: relative;
+    width: 100%;
+
+    button {
+      width: 100%;
+    }
+  }
+
+  .recipient {
+    color: $corax-secondary-color;
+    font-size: 1em;
+    margin-right: 1em;
+  }
+
+  .recipients-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
 }

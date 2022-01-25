@@ -1,9 +1,10 @@
-import {Component, OnInit, QueryList, ViewChildren} from '@angular/core';
+import {Component, OnInit, QueryList, ViewChild, ViewChildren} from '@angular/core';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import { Assignee, Task } from "../../models/models";
 import {ProjectComponent} from "../components/project/project.component";
 import {ApiService} from "../services/api.service";
 import {GlobalStateService} from "../services/global-state.service";
+import {NotificationWindowComponent} from "../components/notification-window/notification-window.component";
 
 @Component({
   selector: 'app-tasks-window',
@@ -12,9 +13,11 @@ import {GlobalStateService} from "../services/global-state.service";
 })
 export class TasksWindowComponent implements OnInit {
 
+  @ViewChild('notificationWindow', {static: false}) notificationWindow: NotificationWindowComponent | undefined;
   @ViewChildren(ProjectComponent) projects: QueryList<ProjectComponent> | undefined;
 
   public projectsList: Array<any> = [];
+  public notificationWindowVisible = false;
 
   constructor(private api: ApiService, private globalState: GlobalStateService) { }
 
@@ -25,12 +28,14 @@ export class TasksWindowComponent implements OnInit {
   public selectedProject: string | undefined;
 
   refreshProjects() {
-    this.api.getProjects('1').subscribe((data: any) => {
+    this.api.getProjects().subscribe((data: any) => {
       this.projectsList = data['res']
 
       this.projects?.forEach((e: ProjectComponent) => {
         e.getTasks()
       })
+
+      this.notificationWindow?.refresh();
     })
   }
 
@@ -53,10 +58,14 @@ export class TasksWindowComponent implements OnInit {
   addProject() {
     this.api.addProject({
       'name': '<Введите название проекта>',
-      'assignees': ['1']
+      'assignees': []
     }).subscribe((data) => {
       this.refreshProjects()
     })
+  }
+
+  toggleNotificationWindow() {
+    this.notificationWindowVisible = !this.notificationWindowVisible;
   }
 
 }

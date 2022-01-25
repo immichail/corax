@@ -2,6 +2,12 @@
 
 //@include mat.core()
 
+app-tasks-window {
+  display: flex;
+  flex-wrap: wrap;
+  flex-grow: 1;
+}
+
 .main-window-wrapper {
   display: flex;
   height: 100vh;
@@ -22,8 +28,8 @@
   //  width: 45vw;
   //
   //}
-
-  width: 45vw;
+  flex-grow: 1;
+  width: auto;
   overflow-y: scroll;
 }
 
@@ -42,6 +48,7 @@
   //}
 
   width: 45vw;
+  max-width: 450px;
 }
 
 $corax-palette: (

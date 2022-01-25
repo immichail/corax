@@ -1,6 +1,6 @@
 <div class="assignee-container">
   <div class="assignee-list">
-    <div class="assignee-name" *ngFor="let assignee of assignees">{{assignee.email}}</div>
+    <div class="assignee-name" *ngFor="let assignee of assignees">{{assignee}}</div>
   </div>
   <div class="assignee-add-button"  (mouseover)="showAvailable()" (mouseleave)="hideAvailable()">
     <div class="assignee-name">+Добавить</div>

@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import { Task } from "../../../models/models";
+import {linearColor, Task} from "../../../models/models";
 import {ApiService} from "../../services/api.service";
 import {GlobalStateService} from "../../services/global-state.service";
 import { MINUTE, HOUR, WEEK, MONTH, DAY } from '../../../models/variables';
@@ -31,19 +31,30 @@ export class TaskComponent implements OnInit {
     {name: '1 неделя', value: 1 * WEEK},
     {name: '2 недели', value: 2 * WEEK}
   ]
+  public dueTime: number | undefined = undefined;
+  public timeDelta: number | undefined = undefined;
+  public dueTimeColor: any = `rgba(${0}, ${0}, ${255}, 1.0)`
 
   constructor(private api: ApiService, public globalState: GlobalStateService) { }
 
   ngOnInit(): void {
     this.refreshTask();
+
+    setInterval(() => {
+      this.refreshDueTime()
+    }, 5000);
   }
 
   refreshTask(): void {
     if (this.task_id != undefined) {
       this.api.getTask(this.task_id).subscribe((data: any) => {
         this.task = new Task(data['res']);
+        console.log("this.task")
+        console.log(this.task)
       })
     }
+
+    this.refreshDueTime()
   }
 
   deleteTask() {
@@ -60,22 +71,43 @@ export class TaskComponent implements OnInit {
     });
   }
 
-  getDueTime() {
-    if (this.task.dueTime === undefined) {
+  refreshDueTime() {
+    if (this.task.dueTime === undefined){
+      return;
+    }
+
+    let timeDelta = (this.task.dueTime.getTime() - Date.now());
+    let timeDeltaPercentage = undefined;
+    if (this.task.startTime != undefined) {
+      timeDeltaPercentage = (this.task.dueTime.getTime() - Date.now()) / (this.task.dueTime.getTime() - this.task.startTime.getTime());
+    }
+
+    this.timeDelta = timeDelta;
+
+    if (timeDeltaPercentage != undefined) {
+      this.dueTimeColor = linearColor(
+        {r: 0, g: 255, b: 0, a: 1.0},
+        {r: 255, g: 0, b: 0, a: 1.0},
+        timeDeltaPercentage
+      )
+    }
+  }
+
+  getDueTimeValue() {
+    if (this.timeDelta === undefined) {
       return 'Не задано';
     } else {
-      let timeDelta = (this.task.dueTime.getTime() - Date.now());
-      if (timeDelta < MINUTE) {
+      if (this.timeDelta < MINUTE) {
         return '<1 мин'
       }
-      if (timeDelta < HOUR) {
-        return Math.round(timeDelta / MINUTE) + ' мин'
+      if (this.timeDelta < HOUR) {
+        return Math.round(this.timeDelta / MINUTE) + ' мин'
       }
-      if (timeDelta < DAY) {
-        return Math.round(timeDelta / HOUR) + ' часов'
+      if (this.timeDelta < DAY) {
+        return Math.round(this.timeDelta / HOUR) + ' часов'
       }
-      if (timeDelta < WEEK) {
-        return Math.round(timeDelta / DAY) + ' дней'
+      if (this.timeDelta < WEEK) {
+        return Math.round(this.timeDelta / DAY) + ' дней'
       }
       return '5 мин';
     }
@@ -88,6 +120,7 @@ export class TaskComponent implements OnInit {
   setDueTime(time: number) {
     this.task.dueTime = new Date(Date.now() + time)
     this.editTask();
+    this.refreshDueTime();
     //this.dueTimeListShown = true;
   }
 

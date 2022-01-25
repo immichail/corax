@@ -17,7 +17,8 @@ class Task {
   emailId: string = '';
   emails: any;
   dueTime: Date | undefined = new Date();
-
+  startTime: Date | undefined = new Date();
+  creator: string | undefined;
   assignees: Array<Assignee> = [];
 
   constructor(obj: any) {
@@ -26,8 +27,10 @@ class Task {
     this.description = obj.hasOwnProperty('description') ? obj.description : '<Не удалось загрузить задачу>';
     this.emailId = obj.hasOwnProperty('emailId') ? obj.emailId : '<Не удалось загрузить задачу>';
     this.emails = obj.hasOwnProperty('emails') ? obj.emails : [];
-    this.assignees = obj.hasOwnProperty('assignees') ? obj.assignees.map((e: any) => new Assignee(e)) : [];
+    this.assignees = obj.hasOwnProperty('assignees') ? obj.assignees.map((e: any) => e) : [];
     this.dueTime = obj.hasOwnProperty('dueTime') ? new Date(obj.dueTime) : undefined;
+    this.startTime = obj.hasOwnProperty('startTime') ? new Date(obj.startTime) : undefined;
+    this.creator = obj.hasOwnProperty('creator') ? obj.creator : undefined;
   }
 }
 
@@ -49,6 +52,7 @@ class Email {
     name: '<unknown>',
     email: '<unknown>'
   })
+  recipients: Array<Sender> = []
   body: any = {};
 
   constructor(obj: any) {
@@ -56,7 +60,12 @@ class Email {
     this.subject = obj.hasOwnProperty('subject') ? obj.subject : '';
     this.sender = obj.hasOwnProperty('sender') ? new Sender(obj.sender) : new Sender({});
     this.body = obj.hasOwnProperty('body') ? obj.body : '';
+    this.recipients = obj.hasOwnProperty('recipients') ? obj.recipients.map((e: any) => new Sender(e)) : '';
   }
 }
 
-export { Assignee, Task, Email, Sender };
+function linearColor(s: any, e: any, p: number) {
+  return `rgba(${(e.r - s.r) * p + s.r}, ${(e.g - s.g) * p + s.g}, ${(e.b - s.b) * p + s.b}, ${(e.a - s.a) * p + s.a})`
+}
+
+export { Assignee, Task, Email, Sender, linearColor };

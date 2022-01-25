@@ -22,6 +22,10 @@
   -moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
   box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
 
+  .task-description {
+    //height: 1em;
+    padding: 2px;
+  }
 
   .task-card {
     overflow-x: hidden;
@@ -78,7 +82,7 @@
 
   .task-bottom {
     display: grid;
-    grid-template-columns: 80% 20%;
+    grid-template-columns: 70% 30%;
     grid-template-rows: 100%;
 
     .task-bottom-left {
@@ -96,9 +100,17 @@
       .duetime-container {
         position: relative;
         font-size: 0.75em;
+        display: flex;
 
         mat-icon {
           font-size: 1.5em;
+          //color: $corax-assignee-color;
+          font-width: bold;
+        }
+
+        .duetime-value {
+          //color: $corax-assignee-color;
+          font-weight: bold;
         }
 
         .duetime-list {
@@ -118,12 +130,6 @@
     }
   }
 }
-
-//.task-container:hover .task-control-panel {
-//  left: 80%;
-//  opacity: 1;
-//  //right: 0%;
-//}
 
 .task-title {
   font-weight: bold;

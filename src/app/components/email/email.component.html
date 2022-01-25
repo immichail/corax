@@ -1,7 +1,49 @@
   <div class="email-container" cdkDrag (cdkDragMoved)="drag($event)" (cdkDragEnded)="dragDrop($event)">
     <div class="email-card">
       <div class="email-card-sender">{{email.sender.name}}</div>
-      <div class="email-card-subject">{{email.subject}}</div>
-      <div class="email-card-content">{{(email.body !== undefined) ? email.body.text.slice(0, 100) + '...' : 'NA'}}</div>
+      <div class="email-card-subject" (click)="toggleView()">{{email.subject}}</div>
+      <div class="recipients-container">
+        <div class="recipient" *ngFor = "let rec of getRecipients()">
+          {{rec.name}}
+        </div>
+        <div class="recipients-tail recipient" *ngIf="email.recipients.length > 3">
+          + {{email.recipients.length - 3}} Получателей
+        </div>
+      </div>
+
+      <div class="control-panel">
+        <button mat-button (click)="fastReplyToggle()">
+          <mat-icon>reply</mat-icon>Быстрый ответ
+        </button>
+        <button mat-button (click)="fastReplyToggleAll()">
+          <mat-icon>reply</mat-icon>Быстрый ответ всем
+        </button>
+
+      </div>
+
+      <div class="short-answer-window" *ngIf="shortAnswerWindow">
+        <div class="recipients-container">
+          <div class="recipient" *ngFor = "let rec of answerRecipients">
+            {{rec.name}}
+          </div>
+        </div>
+        <angular-editor [placeholder]="'Enter text here...'" [(ngModel)]="answerContent"></angular-editor>
+        <div class="short-answer-control-panel">
+          <button mat-button (click)="fastReply()">
+            Ответить
+          </button>
+        </div>
+      </div>
+
+      <div class="short-view" *ngIf="shortView">
+        <div class="email-card-content" (click)="toggleView()">{{(email.body !== undefined) ? email.body.text.slice(0, 100) + '...' : 'NA'}}</div>
+      </div>
+      <div class="long-view" *ngIf="!shortView"  (click)="toggleView()">
+        <div class="email-card-content" [innerHTML]="body"></div>
+      </div>
+
+<!--      <div class="toggle-view">-->
+<!--        <button mat-button (click)="toggleView()">Открыть</button>-->
+<!--      </div>-->
     </div>
   </div>

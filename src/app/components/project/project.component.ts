@@ -30,7 +30,7 @@ export class ProjectComponent implements OnInit {
   }
 
   getTasks() {
-    this.api.getProjectTasks('1', this.project.id).subscribe((data: any) => {
+    this.api.getProjectTasks(this.project.id).subscribe((data: any) => {
       this.tasks = data['res'].map((e: any) => e)
     });
   }
