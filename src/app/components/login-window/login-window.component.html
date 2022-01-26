@@ -1,0 +1,15 @@
+<div class="login-title">
+  Добро пожаловать и идите нахуй
+</div>
+<form class="login-form">
+  <mat-form-field class="login-form-field" appearance="fill">
+    <mat-label>Почта</mat-label>
+    <input type="email" matInput [(ngModel)]="email" name="email"/>
+  </mat-form-field>
+  <mat-form-field class="login-form-field" appearance="fill">
+    <mat-label>Пароль</mat-label>
+    <input type="email" matInput [(ngModel)]="password" name="password"/>
+  </mat-form-field>
+</form>
+
+<button mat-button class="login-button" (click)="login()">Вход</button>
