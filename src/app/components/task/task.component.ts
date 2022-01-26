@@ -34,6 +34,7 @@ export class TaskComponent implements OnInit {
   public dueTime: number | undefined = undefined;
   public timeDelta: number | undefined = undefined;
   public dueTimeColor: any = `rgba(${0}, ${0}, ${255}, 1.0)`
+  public chidlrenTasks: Array<string> = [];
 
   constructor(private api: ApiService, public globalState: GlobalStateService) { }
 
@@ -49,8 +50,7 @@ export class TaskComponent implements OnInit {
     if (this.task_id != undefined) {
       this.api.getTask(this.task_id).subscribe((data: any) => {
         this.task = new Task(data['res']);
-        console.log("this.task")
-        console.log(this.task)
+        this.getChildrenTasks();
       })
     }
 
@@ -130,6 +130,12 @@ export class TaskComponent implements OnInit {
         this.taskDeleted.emit()
       });
     }
+  }
+
+  getChildrenTasks() {
+    this.api.getChildrenTask(this.task_id).subscribe((data: any) => {
+      this.chidlrenTasks = data['res'];
+    })
   }
 
 }

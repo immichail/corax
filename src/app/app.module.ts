@@ -24,6 +24,7 @@ import { LoginWindowComponent } from './components/login-window/login-window.com
 import {MatDialog, MatDialogModule} from "@angular/material/dialog";
 import {CookieService} from "ngx-cookie-service";
 import { NotificationWindowComponent } from './components/notification-window/notification-window.component';
+import {MatRippleModule} from "@angular/material/core";
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { NotificationWindowComponent } from './components/notification-window/no
     FormsModule,
     MatInputModule,
     AngularEditorModule,
-    MatDialogModule
+    MatDialogModule,
+    MatRippleModule
   ],
   providers: [
     CookieService
