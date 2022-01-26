@@ -25,6 +25,8 @@ import {MatDialog, MatDialogModule} from "@angular/material/dialog";
 import {CookieService} from "ngx-cookie-service";
 import { NotificationWindowComponent } from './components/notification-window/notification-window.component';
 import {MatRippleModule} from "@angular/material/core";
+import { TaskFullWindowComponent } from './components/task-full-window/task-full-window.component';
+import { EmailFullWindowComponent } from './components/email-full-window/email-full-window.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,8 @@ import {MatRippleModule} from "@angular/material/core";
     AssigneeRefComponent,
     LoginWindowComponent,
     NotificationWindowComponent,
+    TaskFullWindowComponent,
+    EmailFullWindowComponent,
 
   ],
   imports: [

@@ -6,6 +6,7 @@ import {CookieService} from "ngx-cookie-service";
 import {GlobalStateService} from "./services/global-state.service";
 import {EmailsWindowComponent} from "./components/emails-window/emails-window.component";
 import {ApiService} from "./services/api.service";
+import {TaskFullWindowComponent} from "./components/task-full-window/task-full-window.component";
 
 @Component({
   selector: 'app-root',
@@ -43,6 +44,8 @@ export class AppComponent {
         }
       })
     }
+
+
   }
 
   registerUser() {
@@ -54,6 +57,7 @@ export class AppComponent {
       this.globalState.dependant = data['res'];
     })
 
+    this.openTaskFullWindow('8403e214-7c08-4560-953f-fcb87d08ab7b');
   }
 
   askLogin() {
@@ -64,6 +68,16 @@ export class AppComponent {
     dialogRef.afterClosed().subscribe(() => {
       this.registerUser()
     })
+  }
+
+  openTaskFullWindow(task_id: string) {
+    let dialogRef = this.dialog.open(TaskFullWindowComponent, {
+      height: '75vh',
+      width: '30vw',
+      data: {
+        task_id: task_id
+      }
+    });
   }
 
 }
