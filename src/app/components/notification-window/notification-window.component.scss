@@ -1,0 +1,42 @@
+@import '../../app.component';
+
+.notification-container {
+  position: fixed;
+  top: 24px;
+  left: 24px;
+  width: 30vw;
+  min-width: 450px;
+  max-height: 100vh;
+  overflow-y: scroll;
+  z-index: 200;
+  background-color: white;
+}
+
+.notification {
+  width: 90%;
+  margin: 5%;
+  background-color: white;
+  padding: 12px;
+  box-sizing: border-box;
+
+  -webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.4);
+  -moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.4);
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.4);
+
+}
+
+.notification-title {
+  font-weight: bold;
+}
+
+.notification-controls {
+  width: 100%;
+  display: flex;
+  flex-grow: 1;
+
+  button {
+    flex-grow: 1;
+    background-color: $corax-done-button-color;
+    //width: 100%;
+  }
+}

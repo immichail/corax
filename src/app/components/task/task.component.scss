@@ -12,15 +12,71 @@
   z-index: -1;
 }
 
-.task-container {
-  margin: 12px;
+.task-container-wrapper {
+  position: relative;
+  margin-left: 24px;
   padding: 12px;
-  padding-left: calc(20% + 12px);
+  padding-left: 24px;
+  padding-right: 0px;
+  //border-left: 3px solid $corax-tree-color;
+  width: calc(100% - 48px);
+}
+
+.task-container-symbol {
+  position: absolute;
+  left: calc(-64px / 2 - 0px);
+  top: calc(50% - 18px / 2);
+
+  mat-icon {
+    font-size: $corax-tree-symbol-size;
+    //background-color: white;
+    width: $corax-tree-symbol-size;
+    height: $corax-tree-symbol-size;
+    color: $corax-tree-color;
+  }
+}
+
+.task-container-graphics {
+  .border-top {
+    position: absolute;
+    border-left: 2px solid $corax-tree-color;
+    border-bottom: 2px solid $corax-tree-color;
+    width: 24px;
+    height: 50%;
+    left: -24px;
+    top: -12px;
+    border-bottom-left-radius: 24px 24px;
+  }
+  .border-top-overflow {
+    position: absolute;
+    border-left: 2px solid $corax-tree-color;
+    width: 24px;
+    height: calc(100% + 12px);
+    left: -24px;
+    top: 0px;
+  }
+
+  .border-bottom {
+    position: absolute;
+    border-left: 2px solid $corax-tree-color;
+    width: 24px;
+    height: 50%;
+    left: -0px;
+    top: 50%;
+  }
+}
+
+.task-container {
+  //margin: 12px;
+  padding: 12px;
+  padding-left: calc(96px + 24px);
+  //padding-right: 0px;
   position: relative;
   overflow-y: visible;
   -webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
   -moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
   box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  border-radius: 6px;
 
   .task-description {
     //height: 1em;
@@ -40,7 +96,7 @@
     left: 0%;
     top: 0%;
     height: 100%;
-    width: 20%;
+    width: 96px;
     color: white;
     //transition: all 0.1s ease-in;
     //opacity: 0;
@@ -54,6 +110,7 @@
       text-align: center;
       background-color: $corax-delete-button-color;
       cursor: pointer;
+      border-bottom-left-radius: 6px;
 
       .task-delete-button-container {
         display: table-cell;
@@ -71,6 +128,7 @@
       text-align: center;
       background-color: $corax-done-button-color;
       cursor: pointer;
+      border-top-left-radius: 6px;
 
       .task-done-button-container {
         display: table-cell;

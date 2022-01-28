@@ -10,14 +10,16 @@
       cdkDropList
       #projectList="cdkDropList"
       [cdkDropListData]="tasks"
-      class="example-list">
+      class="task-list-wrapper">
       <app-task *ngFor="let task of tasks" [task_id]="task" (taskDeleted)="getTasks()"></app-task>
-      <div class="add-task-button">
-        <button mat-button class="add-task-button-button" (click)="addTaskEmpty()">
-          <mat-icon>add</mat-icon>
-          Добавить задачу
-        </button>
-      </div>
     </div>
+
+    <div class="add-task-button">
+      <button mat-button class="add-task-button-button" (click)="addTaskEmpty()">
+        <mat-icon>add</mat-icon>
+        Добавить задачу
+      </button>
+    </div>
+
   </div>
 </div>

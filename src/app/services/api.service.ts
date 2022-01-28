@@ -155,4 +155,11 @@ export class ApiService {
       task_id: task_id
     })
   }
+
+  getChildrenTask(task_id: string) {
+    return this.http.post(this.apiUrl + '/task/children', {
+      user_id: this.globalState.user_id,
+      task_id: task_id
+    })
+  }
 }

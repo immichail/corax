@@ -1,0 +1,20 @@
+<div class="notification-container" *ngIf="visible">
+  <div class="empty-notification-placeholder" *ngIf="notifications.length == 0">
+    <mat-card>
+      Нет текущих уведомлений
+    </mat-card>
+  </div>
+  <div class="notification" *ngFor="let not of notifications">
+    <div class="notification-title">
+      {{not.title}}
+    </div>
+
+    <div class="notification-description">
+      {{not.description}}
+    </div>
+
+    <div class="notification-controls">
+      <button mat-button (click)="acceptTask(not.id)">Принять</button>
+    </div>
+  </div>
+</div>
