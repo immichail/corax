@@ -1,5 +1,5 @@
-  <div class="email-container" cdkDrag (cdkDragMoved)="drag($event)" (cdkDragEnded)="dragDrop($event)">
-    <div class="email-card">
+  <div class="email-container" cdkDrag (cdkDragMoved)="drag($event)" (cdkDragEnded)="dragDrop($event)"  (dblclick)="openEmailFullWindow(email.id)">
+    <div class="email-card" [ngClass]="{'not-read': !email.is_read}">
       <div class="email-card-sender">{{email.sender.name}}</div>
       <div class="email-card-subject" (click)="toggleView()">{{email.subject}}</div>
       <div class="recipients-container">

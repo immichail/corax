@@ -132,14 +132,13 @@ export class ApiService {
     })
   }
 
-  replyEmail(message_id : string, body: string, recipients: Array<Sender>) {
+  replyEmail(message_id : string, body: string, recipients: Array<any>, recipientsCopy: Array<any>) {
     return this.http.post(this.apiUrl + '/email/reply', {
       user_id: this.globalState.user_id,
       message_id: message_id,
       body: body,
-      recipients: recipients.map((e: Sender) => {
-        return {name: e.name, email: e.email}
-      })
+      recipients: recipients,
+      recipientsCopy: recipientsCopy
     })
   }
 
@@ -162,4 +161,28 @@ export class ApiService {
       task_id: task_id
     })
   }
+
+  uploadFile(data: any) {
+    return this.http.post(this.apiUrl + '/file/upload', data)
+  }
+
+  downloadFile(file_id: string) {
+    return this.http.post(this.apiUrl + '/file/download', {
+      id: file_id
+    })
+  }
+
+  getFileMeta(file_id: string) {
+    return this.http.post(this.apiUrl + '/file/meta', {
+      id: file_id
+    })
+  }
+
+  getConversation(message_id: string) {
+    return this.http.post(this.apiUrl + '/email/conversation', {
+      user_id: this.globalState.user_id,
+      email_id: message_id
+    })
+  }
+
 }

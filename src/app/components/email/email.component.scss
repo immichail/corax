@@ -2,10 +2,27 @@
 
 .email-container {
   padding: 2px;
+
   //transform: translateX(-100px);
 
+  .email-card:before {
+    content: "";
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    height: 100%;
+    width: 12px;
+  }
+
+  .email-card.not-read:before {
+    background-color: $corax-primary-color;
+  }
+
   .email-card {
+    position: relative;
+    overflow: hidden;
     padding: 12px;
+    padding-left: 24px;
     font-size: 0.75em;
 
     border-radius: 6px;

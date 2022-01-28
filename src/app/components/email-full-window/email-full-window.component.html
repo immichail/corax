@@ -1,1 +1,58 @@
-<p>email-full-window works!</p>
+<div class="email-full-window-container">
+  <div class="email-container" *ngFor="let email of conversation"
+       [ngClass]="{'selected': email.message_id == openMessageId}">
+    <app-email-editor
+      *ngIf="(openMessageId == email.message_id)&&(editorMessageId == email.message_id)"
+      [recievers]="editorRecipients"
+      [recieversCopy]="editorRecipientsCopy"
+      [message_id]="editorMessageId"
+    >
+
+    </app-email-editor>
+
+    <div class="email-top-container">
+      <div class="email-top-container-left">
+        <div class="email-sender">
+          {{email.sender.name}}
+          <div class="symbol" (click)="openMessageId = email.message_id">
+
+          </div>
+        </div>
+        <div class="email-content">
+          <div class="email-subject">{{email.subject}}</div>
+          <div class="email-datetime-recieved block">
+            <div class="label">
+              Дата получения:
+            </div>
+            <div class="content">
+              {{email.datetime_received}}
+            </div>
+
+          </div>
+          <div class="email-recipients block">
+            <div class="label">
+              Получатели:
+            </div>
+            <div class="content">
+              <div class="recipient" *ngFor="let rec of email.to_recipients">{{rec.name}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="email-top-container-right">
+        <div class="email-controls" *ngIf="(openMessageId == email.message_id)">
+          <app-button [icon]="'reply'" (click)="answerClick(email.message_id)"></app-button>
+          <app-button [icon]="'reply_all'" (click)="answerAllClick(email.message_id)"></app-button>
+<!--          <button mat-button (click)="answerClick(email.message_id)">Ответить</button>-->
+<!--          <button mat-button (click)="answerAllClick(email.message_id)">Ответить всем</button>-->
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="email-full-content" [innerHTML]="email.body.html">
+    </div>
+  </div>
+</div>

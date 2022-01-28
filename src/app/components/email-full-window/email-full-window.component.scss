@@ -1,0 +1,93 @@
+@import '../../app.component';
+
+.email-container {
+  position: relative;
+  margin-left: 24px;
+  padding: 6px 0px 6px 24px;
+  border-left: 1px solid $corax-primary-color;
+
+  .email-sender {
+    position: relative;
+    font-size: 1.25em;
+    color: $corax-primary-color;
+  }
+
+  .email-content {
+  }
+
+  .email-full-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.2s ease-in;
+    border-left: 1px solid $corax-primary-color;
+    padding-left: 12px;
+    padding-top: 0px;
+    background-color: adjust-color($corax-primary-color, $alpha: -0.9);
+  }
+
+  .email-top-container {
+    display: grid;
+    grid-template-columns: 80% 20%;
+    grid-template-rows: 100%;
+
+    .email-top-container-left {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    .email-top-container-right {
+      grid-column: 2;
+      grid-row: 1;
+      position: relative;
+
+      .email-controls {
+        position: relative;
+        display: flex;
+        height: 100%;
+
+        app-button {
+          flex-grow: 1;
+        }
+
+      }
+    }
+  }
+}
+
+.email-container.selected {
+  .email-full-content {
+    max-height: 500vh;
+    padding-top: 12px;
+  }
+}
+
+.email-sender .symbol {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  left: calc(-6px - 24px);
+  top: calc(50% - 6px);
+  background-color: white;
+  border: 1px solid $corax-primary-color;
+  border-radius: 50%;
+}
+
+.block {
+  display: grid;
+  grid-template-columns: 20% auto;
+  grid-template-rows: 100%;
+
+  .label {
+    grid-column: 1;
+    grid-row: 1;
+    color: rgba(0, 0, 0, 0.75)
+  }
+
+  .content {
+    display: flex;
+    flex-wrap: wrap;
+    grid-column: 2;
+    grid-row: 1;
+    color: rgba(0, 0, 0, 1.0)
+  }
+}

@@ -3,6 +3,8 @@ import {linearColor, Task} from "../../../models/models";
 import {ApiService} from "../../services/api.service";
 import {GlobalStateService} from "../../services/global-state.service";
 import { MINUTE, HOUR, WEEK, MONTH, DAY } from '../../../models/variables';
+import {TaskFullWindowComponent} from "../task-full-window/task-full-window.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-task',
@@ -36,7 +38,7 @@ export class TaskComponent implements OnInit {
   public dueTimeColor: any = `rgba(${0}, ${0}, ${255}, 1.0)`
   public chidlrenTasks: Array<string> = [];
 
-  constructor(private api: ApiService, public globalState: GlobalStateService) { }
+  constructor(private api: ApiService, public globalState: GlobalStateService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.refreshTask();
@@ -136,6 +138,16 @@ export class TaskComponent implements OnInit {
     this.api.getChildrenTask(this.task_id).subscribe((data: any) => {
       this.chidlrenTasks = data['res'];
     })
+  }
+
+  openTaskFullWindow() {
+    let dialogRef = this.dialog.open(TaskFullWindowComponent, {
+      height: '75vh',
+      width: '30vw',
+      data: {
+        task_id: this.task_id
+      }
+    });
   }
 
 }

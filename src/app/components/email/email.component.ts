@@ -1,6 +1,8 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Email, Sender} from "../../../models/models";
 import {ApiService} from "../../services/api.service";
+import {EmailFullWindowComponent} from "../email-full-window/email-full-window.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-email',
@@ -19,7 +21,8 @@ export class EmailComponent implements OnInit {
     body: {
       text: 'Не удалось загрузить сообщение',
       html: 'Не удалось загрузить сообщение'
-    }
+    },
+    is_read: false
   });
 
   @Output() onEmailDrag = new EventEmitter<any>();
@@ -31,9 +34,11 @@ export class EmailComponent implements OnInit {
   public answerContent = '';
   public answerRecipients: Array<Sender> = [];
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
+    console.log("this.email.is_read")
+    console.log(this.email.is_read)
   }
 
   dragDrop(event: any) {
@@ -69,7 +74,12 @@ export class EmailComponent implements OnInit {
   }
 
   fastReply() {
-    this.api.replyEmail(this.email.id, this.answerContent, this.answerRecipients).subscribe((data: any) => {
+    this.api.replyEmail(this.email.id, this.answerContent, this.answerRecipients.map((e: any) => {
+      return {
+        name: e.name,
+        email: e.email
+      }
+    }), []).subscribe((data: any) => {
 
     });
   }
@@ -80,6 +90,16 @@ export class EmailComponent implements OnInit {
     } else {
       return this.email.recipients;
     }
+  }
+
+  openEmailFullWindow(message_id: string) {
+    let dialogRef = this.dialog.open(EmailFullWindowComponent, {
+      height: '75vh',
+      width: '30vw',
+      data: {
+        message_id: message_id
+      }
+    });
   }
 
 

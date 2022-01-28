@@ -3,8 +3,24 @@
     {{task.title}}
   </div>
 
-  <div class="task-description">
-    {{task.description}}
+  <div class="block start-time-container">
+    <div class="block-name">
+      Описание задачи:
+    </div>
+    <div class="block-content">
+      <div class="task-description">
+        {{task.description}}
+      </div>
+    </div>
+  </div>
+
+  <div class="block start-time-container">
+    <div class="block-name">
+      Постановщик:
+    </div>
+    <div class="block-content">
+      {{task.creator}}
+    </div>
   </div>
 
   <div class="block start-time-container">
@@ -12,19 +28,53 @@
       Дата постановки задачи:
     </div>
     <div class="block-content">
-      10 января 2021 года
+      {{task.startTime}}
     </div>
-  </div
+  </div>
 
   <div class="block assignees-container">
-
+    <div class="block-name">
+      Ответственные:
+    </div>
+    <div class="block-content">
+      <div class="assignee" *ngFor="let a of task.assignees">
+        {{a}}
+      </div>
+    </div>
   </div>
 
-  <div class="block emails-refs-container">
+  <div class="block attachment-container">
+    <div class="block-name">
+      Приложения:
+    </div>
+    <div class="block-content">
+      <div class="upload-field">
+        <label for="fileDropRef" class="custom-file-upload">
+          <input type="file" #fileDropRef id="fileDropRef" multiple placeholder="Файлы"
+                 (change)='fileBrowseHandler($event)'
+                 (dragover)="uploadDragOver($event)"
+                 (dragleave)="uploadDragLeave($event)"
+                 (drop)="uploadDragDrop($event)"/>
+          Custom Upload
+        </label>
 
+      </div>
+
+      <div class="file-list-container">
+        <app-attachment class="attachment" *ngFor="let file of task.files" [id]="file"></app-attachment>
+      </div>
+    </div>
   </div>
 
-  <div class="block emails-refs-container">
-
+  <div class="block emails-container">
+    <div class="block-name">
+      Ссылки на прикрепленные письма:
+    </div>
+    <div class="block-content">
+      <div class="emails-container">
+        <app-email-ref *ngFor="let email_ref of task.emails" [message_id]="email_ref"></app-email-ref>
+      </div>
+    </div>
   </div>
+
 </div>

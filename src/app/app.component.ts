@@ -7,6 +7,8 @@ import {GlobalStateService} from "./services/global-state.service";
 import {EmailsWindowComponent} from "./components/emails-window/emails-window.component";
 import {ApiService} from "./services/api.service";
 import {TaskFullWindowComponent} from "./components/task-full-window/task-full-window.component";
+import {Email} from "../models/models";
+import {EmailFullWindowComponent} from "./components/email-full-window/email-full-window.component";
 
 @Component({
   selector: 'app-root',
@@ -44,8 +46,6 @@ export class AppComponent {
         }
       })
     }
-
-
   }
 
   registerUser() {
@@ -57,7 +57,13 @@ export class AppComponent {
       this.globalState.dependant = data['res'];
     })
 
-    this.openTaskFullWindow('8403e214-7c08-4560-953f-fcb87d08ab7b');
+    // let dialogRef = this.dialog.open(EmailFullWindowComponent, {
+    //   height: '75vh',
+    //   width: '30vw',
+    //   data: {
+    //     message_id: '<0a1ce23a1dd04e2d8f57ffb227895c77@cspfmba.ru>'
+    //   }
+    // });
   }
 
   askLogin() {
@@ -70,14 +76,7 @@ export class AppComponent {
     })
   }
 
-  openTaskFullWindow(task_id: string) {
-    let dialogRef = this.dialog.open(TaskFullWindowComponent, {
-      height: '75vh',
-      width: '30vw',
-      data: {
-        task_id: task_id
-      }
-    });
-  }
+
+  //<139a5e30b99c4f79b57f8dc3de58ecab@cspfmba.ru>
 
 }

@@ -15,7 +15,7 @@ import { EmailComponent } from './components/email/email.component';
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import {MatFormFieldModule} from "@angular/material/form-field";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { MatInputModule} from "@angular/material/input";
 import { EmailRefComponent } from './components/email-ref/email-ref.component';
 import { AssigneeRefComponent } from './components/assignee-ref/assignee-ref.component';
@@ -27,6 +27,11 @@ import { NotificationWindowComponent } from './components/notification-window/no
 import {MatRippleModule} from "@angular/material/core";
 import { TaskFullWindowComponent } from './components/task-full-window/task-full-window.component';
 import { EmailFullWindowComponent } from './components/email-full-window/email-full-window.component';
+import { AttachmentComponent } from './components/attachment/attachment.component';
+import { EmailEditorComponent } from './components/email-editor/email-editor.component';
+import {MatChipsModule} from "@angular/material/chips";
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
+import { ButtonComponent } from './components/common/button/button.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +47,9 @@ import { EmailFullWindowComponent } from './components/email-full-window/email-f
     NotificationWindowComponent,
     TaskFullWindowComponent,
     EmailFullWindowComponent,
+    AttachmentComponent,
+    EmailEditorComponent,
+    ButtonComponent,
 
   ],
   imports: [
@@ -58,7 +66,10 @@ import { EmailFullWindowComponent } from './components/email-full-window/email-f
     MatInputModule,
     AngularEditorModule,
     MatDialogModule,
-    MatRippleModule
+    MatRippleModule,
+    MatChipsModule,
+    ReactiveFormsModule,
+    MatAutocompleteModule
   ],
   providers: [
     CookieService

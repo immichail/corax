@@ -1,4 +1,9 @@
 @use '@angular/material' as mat;
+@import 'node_modules/bootstrap/scss/bootstrap';
+@import 'node_modules/bootstrap/scss/functions';
+@import 'node_modules/bootstrap/scss/variables';
+@import 'node_modules/bootstrap/scss/mixins';
+
 
 //@include mat.core()
 
@@ -81,6 +86,7 @@ $corax-secondary-color: #00c4ff;
 $corax-assignee-color: #ff6b10;
 $corax-tree-color: #F9C74F;
 $corax-tree-symbol-size: 18px;
+$corax-file-color: #43AA8B;
 
 $corax-delete-button-color: #F94144;
 $corax-done-button-color: #43AA8B;

@@ -20,6 +20,7 @@ class Task {
   startTime: Date | undefined = new Date();
   creator: string | undefined;
   assignees: Array<Assignee> = [];
+  files: Array<string> = [];
 
   constructor(obj: any) {
     this.id = obj.hasOwnProperty('id') ? obj.id : '';
@@ -31,6 +32,7 @@ class Task {
     this.dueTime = obj.hasOwnProperty('dueTime') ? new Date(obj.dueTime) : undefined;
     this.startTime = obj.hasOwnProperty('startTime') ? new Date(obj.startTime) : undefined;
     this.creator = obj.hasOwnProperty('creator') ? obj.creator : undefined;
+    this.files = obj.hasOwnProperty('files') ? obj.files : [];
   }
 }
 
@@ -54,6 +56,7 @@ class Email {
   })
   recipients: Array<Sender> = []
   body: any = {};
+  is_read: boolean = false;
 
   constructor(obj: any) {
     this.id = obj.hasOwnProperty('id') ? obj.id : '';
@@ -61,6 +64,7 @@ class Email {
     this.sender = obj.hasOwnProperty('sender') ? new Sender(obj.sender) : new Sender({});
     this.body = obj.hasOwnProperty('body') ? obj.body : '';
     this.recipients = obj.hasOwnProperty('recipients') ? obj.recipients.map((e: any) => new Sender(e)) : '';
+    this.is_read = obj.hasOwnProperty('is_read') ? obj.is_read : false;
   }
 }
 
