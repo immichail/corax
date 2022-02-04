@@ -39,8 +39,6 @@ export class EmailFullWindowComponent implements OnInit {
   }
 
   answer() {
-    console.log("this.answerContent")
-    console.log(this.answerContent)
-    // this.api.replyEmail(this.editorMessageId, this.answerContent, );
+
   }
 }

@@ -21,12 +21,14 @@ class Task {
   creator: string | undefined;
   assignees: Array<Assignee> = [];
   files: Array<string> = [];
+  project_id: string = '';
 
   constructor(obj: any) {
     this.id = obj.hasOwnProperty('id') ? obj.id : '';
     this.title = obj.hasOwnProperty('title') ? obj.title : '<Не удалось загрузить задачу>';
     this.description = obj.hasOwnProperty('description') ? obj.description : '<Не удалось загрузить задачу>';
     this.emailId = obj.hasOwnProperty('emailId') ? obj.emailId : '<Не удалось загрузить задачу>';
+    this.project_id = obj.hasOwnProperty('project_id') ? obj.project_id : '';
     this.emails = obj.hasOwnProperty('emails') ? obj.emails : [];
     this.assignees = obj.hasOwnProperty('assignees') ? obj.assignees.map((e: any) => e) : [];
     this.dueTime = obj.hasOwnProperty('dueTime') ? new Date(obj.dueTime) : undefined;

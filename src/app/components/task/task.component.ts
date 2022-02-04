@@ -136,7 +136,7 @@ export class TaskComponent implements OnInit {
 
   getChildrenTasks() {
     this.api.getChildrenTask(this.task_id).subscribe((data: any) => {
-      this.chidlrenTasks = data['res'];
+      this.chidlrenTasks = data['res'].map((e: any) => e.id);
     })
   }
 
@@ -148,6 +148,24 @@ export class TaskComponent implements OnInit {
         task_id: this.task_id
       }
     });
+  }
+
+  addSubTask() {
+    let task = {
+      'title': '<Введите название задачи>',
+      'subject': '<Введите название задачи>',
+      'project_id': this.task.project_id,
+      'description': '<Введите описание задачи>',
+      'parent_id': this.task.id,
+      'emails': [],
+      'assignees': []
+    }
+
+    this.api.addTask(this.task.project_id, task).subscribe((data: any) => {
+
+      this.refreshTask();
+    });
+
   }
 
 }

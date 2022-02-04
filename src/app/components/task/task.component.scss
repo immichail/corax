@@ -19,7 +19,7 @@
   padding-left: 24px;
   padding-right: 0px;
   //border-left: 3px solid $corax-tree-color;
-  width: calc(100% - 48px);
+  width: calc(100% - 24px);
 }
 
 .task-container-symbol {
@@ -46,6 +46,7 @@
     left: -24px;
     top: -12px;
     border-bottom-left-radius: 24px 24px;
+    z-index: 2;
   }
   .border-top-overflow {
     position: absolute;
@@ -58,11 +59,11 @@
 
   .border-bottom {
     position: absolute;
-    border-left: 2px solid $corax-tree-color;
+    border-left: 2px solid #F9C74F;
     width: 24px;
-    height: 50%;
-    left: -0px;
-    top: 50%;
+    height: 100%;
+    left: 0px;
+    top: 0%;
   }
 }
 
@@ -236,4 +237,21 @@
 
 .task-bottom-assignees-container {
   display: flex;
+}
+
+.add-subtask-button {
+  position: relative;
+  width: 100%;
+  height: 2em;
+  text-align: center;
+  border: 1px dashed $corax-assignee-color;
+  z-index: 1;
+  border-radius: 6px;
+  background-color: adjust-color($corax-assignee-color, $alpha: -0.9);
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+}
+
+.add-subtask-button:hover {
+  background-color: adjust-color($corax-assignee-color, $alpha: -0.75);
 }

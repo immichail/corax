@@ -1,6 +1,6 @@
-<div class="task-container-wrapper" (dblclick)="openTaskFullWindow()">
+<div class="task-container-wrapper">
 
-  <div class="task-container-graphics">
+  <div class="task-container-graphics" (dblclick)="openTaskFullWindow()">
     <div class="border-bottom">
 
     </div>
@@ -8,10 +8,6 @@
   </div>
 
   <div class="task-container" cdkDrag>
-
-<!--    <div class="task-container-symbol">-->
-<!--      <mat-icon>circle</mat-icon>-->
-<!--    </div>-->
 
     <div class="task-container-graphics">
       <div class="border-top">
@@ -26,17 +22,7 @@
 
     <div class="task-card">
       <div class="task-title">
-  <!--      <div class="task-title-title">-->
-  <!--        {{task?.title}}-->
-  <!--      </div>-->
-
         <input class="task-title-text" [(ngModel)] = 'task.title' (change)="editTask()"/>
-
-  <!--      <div class="task-title-controls">-->
-  <!--        <button (click)="deleteTask()">-->
-  <!--          <mat-icon>delete</mat-icon>-->
-  <!--        </button>-->
-  <!--      </div>-->
       </div>
 
       <textarea class="task-description" [(ngModel)]="task.description" (change)="editTask()">
@@ -59,10 +45,6 @@
 
     <div class="task-bottom">
       <div class="task-bottom-left">
-  <!--      <div class="task-bottom-emails-container">-->
-  <!--        <app-email-ref class="email-ref" *ngFor="let email_ref of this.task.emails" [message_id]="email_ref"></app-email-ref>-->
-  <!--      </div>-->
-
         <div class="task-bottom-assignees-container">
           <app-assignee-ref class="assignee-ref" [assignees]="task.assignees" [task_id]="task_id" (addAssigneeEvent)="refreshTask()"></app-assignee-ref>
         </div>
@@ -86,7 +68,11 @@
 
   <div class="children-tasks-container">
     <div class="example-list">
-      <app-task *ngFor="let task of chidlrenTasks" [task_id]="task"></app-task>
+      <app-task *ngFor="let task of chidlrenTasks" [task_id]="task" (taskDeleted)="refreshTask()"></app-task>
     </div>
+  </div>
+
+  <div matRipple class="add-subtask-button" (click)="addSubTask()">
+    +Добавить подзадачу
   </div>
 </div>

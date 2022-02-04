@@ -37,8 +37,6 @@ export class EmailComponent implements OnInit {
   constructor(private api: ApiService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    console.log("this.email.is_read")
-    console.log(this.email.is_read)
   }
 
   dragDrop(event: any) {
