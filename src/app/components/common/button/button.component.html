@@ -1,0 +1,10 @@
+<div class="corax-button-wrapper">
+  <div matRipple class="corax-button" (click)="click.emit()">
+    <div *ngIf="text != undefined">{{text}}</div>
+    <div *ngIf="icon != undefined">
+      <mat-icon>
+        {{icon}}
+      </mat-icon>
+    </div>
+  </div>
+</div>

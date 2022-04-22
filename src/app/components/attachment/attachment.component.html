@@ -1,0 +1,6 @@
+<div matRipple class="attachment-container" (click)="downloadFile()">
+  <mat-icon>
+    {{icon}}
+  </mat-icon>
+  {{(meta.hasOwnProperty('fileName')) ? meta.fileName : 'Неизвестное имя файла'}}
+</div>

@@ -1,0 +1,28 @@
+.corax-button-wrapper {
+  display: table;
+  position: relative;
+  margin: auto;
+  height: 100%;
+  width: 100%;
+}
+
+.corax-button {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.corax-button:before {
+  content: "";
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  opacity: 0;
+}
+
+.corax-button:hover:before {
+  opacity: 0.05;
+}

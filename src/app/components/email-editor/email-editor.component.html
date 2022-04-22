@@ -1,0 +1,69 @@
+<div class="email-recievers">
+
+  <mat-form-field class="email-recievers-list" appearance="fill">
+    <mat-label>Кому</mat-label>
+    <mat-chip-list #chipList aria-label="Fruit selection">
+      <mat-chip
+        *ngFor="let rec of recievers"
+        (removed)="remove(rec)">
+        {{rec.name}}
+        <button matChipRemove>
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip>
+      <input
+        placeholder="Новый получатель..."
+        #recInput
+        [formControl]="recFormControl"
+        [matAutocomplete]="auto"
+        [matChipInputFor]="chipList"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        (matChipInputTokenEnd)="add($event)" (ngModelChange)="change($event)">
+    </mat-chip-list>
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+      <mat-option *ngFor="let rec of filteredReceivers" [value]="rec">
+        {{rec.name}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
+  <mat-form-field class="email-recievers-list" appearance="fill">
+    <mat-label>Кому</mat-label>
+    <mat-chip-list #chipListCopy aria-label="Fruit selection">
+      <mat-chip
+        *ngFor="let rec of recieversCopy"
+        (removed)="removeCopy(rec)">
+        {{rec.name}}
+        <button matChipRemove>
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip>
+      <input
+        placeholder="Новый получатель..."
+        #recCopyInput
+        [formControl]="recCopyFormControl"
+        [matAutocomplete]="autoCopy"
+        [matChipInputFor]="chipListCopy"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        (matChipInputTokenEnd)="addCopy($event)" (ngModelChange)="changeCopy($event)">
+    </mat-chip-list>
+    <mat-autocomplete #autoCopy="matAutocomplete" (optionSelected)="selectedCopy($event)">
+      <mat-option *ngFor="let rec of filteredReceiversCopy" [value]="rec">
+        {{rec.name}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
+</div>
+
+
+<div class="email-recievers-copy">
+
+</div>
+
+<angular-editor [(ngModel)]="answerContent"></angular-editor>
+
+<div class="email-editor-controls">
+  <button mat-button (click)="answer()">Отправить</button>
+  <button mat-button>Отменить</button>
+</div>

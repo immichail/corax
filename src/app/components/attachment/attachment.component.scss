@@ -1,0 +1,16 @@
+@import '../../app.component';
+
+.attachment-container {
+  margin: 4px;
+  font-size: 1em;
+  border: 2px solid $corax-file-color;
+  border-radius: 4px;
+  color: white;
+  background-color: adjust-color($corax-file-color, $alpha: -0.2);;
+  cursor: pointer;
+
+  mat-icon {
+    height: 1.5em;
+    font-size: 1.5em;
+  }
+}
