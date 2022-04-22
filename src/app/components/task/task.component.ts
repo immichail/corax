@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {linearColor, Task} from "../../../models/models";
 import {ApiService} from "../../services/api.service";
 import {GlobalStateService} from "../../services/global-state.service";
@@ -40,8 +40,16 @@ export class TaskComponent implements OnInit {
 
   constructor(private api: ApiService, public globalState: GlobalStateService, public dialog: MatDialog) { }
 
+  @ViewChild('taskDescription', {static: true}) taskDescription : ElementRef | undefined = undefined;
+
   ngOnInit(): void {
     this.refreshTask();
+
+    setTimeout(() => {
+      let descriptionElement = this.taskDescription?.nativeElement;
+      descriptionElement.style.height = (descriptionElement.scrollHeight)+"px";
+    }, 250);
+
 
     setInterval(() => {
       this.refreshDueTime()
@@ -166,6 +174,18 @@ export class TaskComponent implements OnInit {
       this.refreshTask();
     });
 
+  }
+
+  auto_grow(e: any) {
+    let element = e.target;
+    element.style.height = "5px";
+    element.style.height = (element.scrollHeight)+"px";
+  }
+
+  public disableDragging = false;
+
+  preventDragging() {
+    this.disableDragging = true;
   }
 
 }

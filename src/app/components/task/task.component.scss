@@ -8,7 +8,7 @@
   top: 0%;
   left: 0%;
   background-color: white;
-  border-radius: 6px;
+  border-radius: 24px;
   z-index: -1;
 }
 
@@ -20,6 +20,7 @@
   padding-right: 0px;
   //border-left: 3px solid $corax-tree-color;
   width: calc(100% - 24px);
+  border-radius: 24px;
 }
 
 .task-container-symbol {
@@ -45,7 +46,7 @@
     height: 50%;
     left: -24px;
     top: -12px;
-    border-bottom-left-radius: 24px 24px;
+    border-bottom-left-radius: 48px 48px;
     z-index: 2;
   }
   .border-top-overflow {
@@ -69,75 +70,196 @@
 
 .task-container {
   //margin: 12px;
-  padding: 12px;
-  padding-left: calc(96px + 24px);
+  padding: 24px;
+  //padding-left: calc(96px + 24px);
   //padding-right: 0px;
   position: relative;
   overflow-y: visible;
   -webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
   -moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
   box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
-  border-radius: 6px;
+  //border-radius: 6px;
+  border-radius: 24px;
+  background-color: white;
 
   .task-description {
-    //height: 1em;
-    padding: 2px;
+    resize: none;
+    height: 3em;
+    padding: 0.5em;
+
+    width: 100%;
+    font-size: 1em;
+    padding-bottom: 12px;
+    background-color: transparent;
+    border: none;
+    color: rgba(0, 0, 0, 0.65);
   }
+
+  textarea:focus {
+    background-color: rgba(0, 0, 0, 0.1);
+    border: 0px;
+    outline: none !important;
+  }
+
+
 
   .task-card {
     overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+
+
+    .task-title {
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      height: auto;
+      font-size: 1.25em;
+
+      .task-title-controls {
+        height: 2vh;
+        width: 2vh;
+
+        button {
+          height: inherit;
+          width: inherit;
+          padding: 0.125vh;
+
+          mat-icon {
+            font-size: 1.5vh;
+            height: 1.5vh;
+            width: 1.5vh;
+          }
+        }
+      }
+
+      .task-title-text {
+        width: 100%;
+        font-size: 1em;
+        font-weight: bold;
+        padding-bottom: 12px;
+        //background-color: transparent;
+        border: none;
+        color: rgba(0, 0, 0, 0.75);
+      }
+    }
+
+    .duetime-container {
+      position: relative;
+      font-size: 1em;
+      display: flex;
+      margin-bottom: 1em;
+
+      mat-icon {
+        font-size: 1.25em;
+        //color: $corax-assignee-color;
+        font-width: bold;
+      }
+
+      .duetime-value {
+        //color: $corax-assignee-color;
+        font-weight: bold;
+        font-size: 1em;
+      }
+
+      .duetime-list {
+        position: absolute;
+        top: 100%;
+        left: 0%;
+        width: 100%;
+        text-align: center;
+        z-index: 10;
+
+        .duetime-list-option {
+          background-color: white;
+          border: 1px solid rgba(0, 0, 0, 0.1)
+        }
+      }
+    }
+
+
   }
 
   .task-control-panel {
-
     position: absolute;
-    display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: 50%;
-    left: 0%;
-    top: 0%;
-    height: 100%;
-    width: 96px;
-    color: white;
-    //transition: all 0.1s ease-in;
-    //opacity: 0;
+    right: 0px;
+    top: 0px;
+    margin: 1vh;
+    display: flex;
+    height: 3vh;
 
-    .task-delete-button {
-      display: table;
-      height: 100%;
-      grid-column: 1;
-      grid-row: 2;
-      align-self: center;
+    .app-button {
+      position: relative;
+      height: 3vh;
+      width: 3vh;
+      margin: 0.25vh;
+      border-radius: 2vh;
+      //background-color: red;
       text-align: center;
-      background-color: $corax-delete-button-color;
-      cursor: pointer;
-      border-bottom-left-radius: 6px;
 
-      .task-delete-button-container {
-        display: table-cell;
-        align-content: center;
-        vertical-align: middle;
+      mat-icon {
+        margin: 0.5vh;
       }
     }
 
-    .task-done-button {
-      display: table;
-      height: 100%;
-      grid-column: 1;
-      grid-row: 1;
-      align-self: center;
-      text-align: center;
+    .task-delete-button-container {
+      background-color: $corax-delete-button-color;
+    }
+    .task-done-button-container {
       background-color: $corax-done-button-color;
-      cursor: pointer;
-      border-top-left-radius: 6px;
-
-      .task-done-button-container {
-        display: table-cell;
-        align-content: center;
-        vertical-align: middle;
-      }
     }
   }
+
+  //.task-control-panel {
+  //
+  //  position: absolute;
+  //  display: grid;
+  //  grid-template-columns: 100%;
+  //  grid-template-rows: 50%;
+  //  left: 0%;
+  //  top: 0%;
+  //  height: 100%;
+  //  width: 96px;
+  //  color: white;
+  //  //transition: all 0.1s ease-in;
+  //  //opacity: 0;
+  //
+  //  .task-delete-button {
+  //    display: table;
+  //    height: 100%;
+  //    grid-column: 1;
+  //    grid-row: 2;
+  //    align-self: center;
+  //    text-align: center;
+  //    background-color: $corax-delete-button-color;
+  //    cursor: pointer;
+  //    border-bottom-left-radius: 6px;
+  //
+  //    .task-delete-button-container {
+  //      display: table-cell;
+  //      align-content: center;
+  //      vertical-align: middle;
+  //    }
+  //  }
+  //
+  //  .task-done-button {
+  //    display: table;
+  //    height: 100%;
+  //    grid-column: 1;
+  //    grid-row: 1;
+  //    align-self: center;
+  //    text-align: center;
+  //    background-color: $corax-done-button-color;
+  //    cursor: pointer;
+  //    border-top-left-radius: 6px;
+  //
+  //    .task-done-button-container {
+  //      display: table-cell;
+  //      align-content: center;
+  //      vertical-align: middle;
+  //    }
+  //  }
+  //}
 
   .task-bottom {
     display: grid;
@@ -156,79 +278,12 @@
       vertical-align: middle;
       margin: auto;
 
-      .duetime-container {
-        position: relative;
-        font-size: 0.75em;
-        display: flex;
-
-        mat-icon {
-          font-size: 1.5em;
-          //color: $corax-assignee-color;
-          font-width: bold;
-        }
-
-        .duetime-value {
-          //color: $corax-assignee-color;
-          font-weight: bold;
-        }
-
-        .duetime-list {
-          position: absolute;
-          top: 100%;
-          left: 0%;
-          width: 100%;
-          text-align: center;
-          z-index: 10;
-
-          .duetime-list-option {
-            background-color: white;
-            border: 1px solid rgba(0, 0, 0, 0.1)
-          }
-        }
-      }
     }
   }
 }
 
-.task-title {
-  font-weight: bold;
-  display: flex;
-  justify-content: space-between;
-  height: auto;
-
-
-  .task-title-controls {
-    height: 2vh;
-    width: 2vh;
-
-    button {
-      height: inherit;
-      width: inherit;
-      padding: 0.125vh;
-
-      mat-icon {
-        font-size: 1.5vh;
-        height: 1.5vh;
-        width: 1.5vh;
-      }
-    }
-  }
-
-  .task-title-text {
-    width: 100%;
-    font-size: 1em;
-    padding-bottom: 12px;
-    background-color: transparent;
-    border: none;
-  }
-}
 
 .task-description {
-  width: 100%;
-  font-size: 0.75em;
-  padding-bottom: 12px;
-  background-color: transparent;
-  border: none;
 }
 
 .task-bottom-emails-container {
@@ -246,7 +301,7 @@
   text-align: center;
   border: 1px dashed $corax-assignee-color;
   z-index: 1;
-  border-radius: 6px;
+  //border-radius: 6px;
   background-color: adjust-color($corax-assignee-color, $alpha: -0.9);
   cursor: pointer;
   transition: all 0.2s ease-out;
@@ -254,4 +309,10 @@
 
 .add-subtask-button:hover {
   background-color: adjust-color($corax-assignee-color, $alpha: -0.75);
+}
+
+input:focus, input:active {
+  background-color: rgba(0, 0, 0, 0.1);
+  border: 0px;
+  outline: none !important;
 }

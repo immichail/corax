@@ -2,30 +2,37 @@
 
   <div class="task-container-graphics" (dblclick)="openTaskFullWindow()">
     <div class="border-bottom">
-
     </div>
-
   </div>
 
-  <div class="task-container" cdkDrag>
+  <div class="task-container" cdkDrag [cdkDragDisabled]="disableDragging">
 
     <div class="task-container-graphics">
       <div class="border-top">
-
       </div>
       <div class="border-top-overflow">
-
       </div>
-
     </div>
 
 
     <div class="task-card">
+
+      <div class="duetime-container" (click)="showDueTimeList()" [ngStyle]="{'color': dueTimeColor}">
+        <mat-icon>history</mat-icon>
+        <div class="duetime-value">
+          {{getDueTimeValue()}}
+        </div>
+
+        <div class="duetime-list" *ngIf="dueTimeListShown">
+          <div class="duetime-list-option" *ngFor="let time of dueTimeListOptions" (click)="setDueTime(time.value)">{{time.name}}</div>
+        </div>
+      </div>
+
       <div class="task-title">
         <input class="task-title-text" [(ngModel)] = 'task.title' (change)="editTask()"/>
       </div>
 
-      <textarea class="task-description" [(ngModel)]="task.description" (change)="editTask()">
+      <textarea #taskDescription class="task-description" [(ngModel)]="task.description" (change)="editTask()" (input)="auto_grow($event)" (focusin)="disableDragging = true" (focusout)="disableDragging = false">
       </textarea>
 
       <div class="task-control-panel">
@@ -51,16 +58,7 @@
       </div>
 
       <div class="task-bottom-right">
-        <div class="duetime-container" (click)="showDueTimeList()" [ngStyle]="{'color': dueTimeColor}">
-          <mat-icon>history</mat-icon>
-          <div class="duetime-value">
-            {{getDueTimeValue()}}
-          </div>
 
-          <div class="duetime-list" *ngIf="dueTimeListShown">
-            <div class="duetime-list-option" *ngFor="let time of dueTimeListOptions" (click)="setDueTime(time.value)">{{time.name}}</div>
-          </div>
-        </div>
       </div>
     </div>
 
