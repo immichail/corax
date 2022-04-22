@@ -316,3 +316,12 @@ input:focus, input:active {
   border: 0px;
   outline: none !important;
 }
+
+.assignee-icon {
+  position: relative;
+  height: 3vh;
+  width: 3vh;
+  margin: 0.25vh;
+  border: 1px solid black;
+  border-radius: 4vh;
+}

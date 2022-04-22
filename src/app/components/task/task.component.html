@@ -53,12 +53,14 @@
     <div class="task-bottom">
       <div class="task-bottom-left">
         <div class="task-bottom-assignees-container">
-          <app-assignee-ref class="assignee-ref" [assignees]="task.assignees" [task_id]="task_id" (addAssigneeEvent)="refreshTask()"></app-assignee-ref>
+<!--          <app-assignee-ref class="assignee-ref" [assignees]="task.assignees" [task_id]="task_id" (addAssigneeEvent)="refreshTask()"></app-assignee-ref>-->
+          <div *ngFor="let item of assignees" class="assignee-icon">
+            <img *nfIf="item.img">
+
+          </div>
         </div>
       </div>
-
       <div class="task-bottom-right">
-
       </div>
     </div>
 

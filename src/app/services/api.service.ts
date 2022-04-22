@@ -185,4 +185,10 @@ export class ApiService {
     })
   }
 
+  getUserInfo(email: string) {
+    return this.http.post(this.apiUrl + '/user/info', {
+      assignee_email: email
+    })
+  }
+
 }

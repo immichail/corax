@@ -37,6 +37,7 @@ export class TaskComponent implements OnInit {
   public timeDelta: number | undefined = undefined;
   public dueTimeColor: any = `rgba(${0}, ${0}, ${255}, 1.0)`
   public chidlrenTasks: Array<string> = [];
+  public assignees: any = [];
 
   constructor(private api: ApiService, public globalState: GlobalStateService, public dialog: MatDialog) { }
 
@@ -61,6 +62,13 @@ export class TaskComponent implements OnInit {
       this.api.getTask(this.task_id).subscribe((data: any) => {
         this.task = new Task(data['res']);
         this.getChildrenTasks();
+
+        // @ts-ignore
+        this.task.assignees.forEach((email: string) => {
+          this.api.getUserInfo(email).subscribe((data: any) => {
+            this.assignees.push(data.res);
+          });
+        })
       })
     }
 
